@@ -8,9 +8,9 @@ var rndoptions = {
     , max:  10000
     , integer: true
 }
-router.get('/', function(req, res, next) {
+router.get('/:accountid', function(req, res, next) {
 
-    getJSON(horizonUrl + "/accounts/" + req.query.accountid, function(error, response){
+    getJSON(horizonUrl + "/accounts/" + req.params.accountid, function(error, response){
        // if(error){
        //     res.status(400).send("Invalid account Id");
       //  } else {
