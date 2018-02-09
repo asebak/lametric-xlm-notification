@@ -22,7 +22,7 @@ router.get('/:accountid', function(req, res, next) {
                         icon: "i15391"
                     },
                     {
-                        text: rn(rndoptions) + "$",
+                        text: rn(rndoptions) + " $",
                         icon: "i15391"
                     }
                 ]
