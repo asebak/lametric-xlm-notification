@@ -23,8 +23,8 @@ router.get('/:accountid', function(req, res, next) {
                 if(!prevValue){
                     prevValue = 0;
                 }
-                //var newValue = response.balances[0].balance;
-                var newValue = rn(rndoptions);
+                var newValue = response.balances[0].balance;
+                //var newValue = rn(rndoptions);
                 var changedValue = newValue - prevValue;
                 var changedPercentage = 0;
                 if(prevValue !== 0) {
