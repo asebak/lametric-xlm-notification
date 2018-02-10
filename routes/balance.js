@@ -14,10 +14,10 @@ const PRICE_DOWN = 'a11225';
 const STELLAR = "i15391";
 router.get('/:accountid', function(req, res, next) {
 
-   // getJSON(horizonUrl + "/accounts/" + req.params.accountid, function(error, response){
-  //      if(error){
-   //        res.status(400).send("Invalid account Id");
-  //      } else {
+   getJSON(horizonUrl + "/accounts/" + req.params.accountid, function(error, response){
+        if(error){
+           res.status(400).send("Invalid account Id");
+        } else {
             getUsdPrice(function(usd){
                 var prevValue = cache.get(req.params.accountid);
                 if(!prevValue){
@@ -58,8 +58,8 @@ router.get('/:accountid', function(req, res, next) {
                 }, null, 3));
             });
 
-       // }
-   // });
+        }
+    });
 });
 
 getUsdPrice = function(callback) {
