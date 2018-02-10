@@ -13,7 +13,10 @@ const PRICE_UP   = 'a858';
 const PRICE_DOWN = 'a11225';
 const STELLAR = "i15391";
 router.get('/:accountid', function(req, res, next) {
-
+    var accountId = req.params.accountid;
+    if(!accountId){
+        accountId = req.query.accountid;
+    }
    getJSON(horizonUrl + "/accounts/" + req.params.accountid, function(error, response){
         if(error){
            res.status(400).send("Invalid account Id");
