@@ -9,8 +9,8 @@ var rndoptions = {
     , integer: true
 };
 var cache = require('memory-cache');
-const PRICE_UP   = 'i7465';
-const PRICE_DOWN = 'i7463';
+const PRICE_UP   = 'a858';
+const PRICE_DOWN = 'a11225';
 const STELLAR = "i15391";
 router.get('/:accountid', function(req, res, next) {
 
