@@ -13,7 +13,7 @@ const PRICE_UP   = 'a858';
 const PRICE_DOWN = 'a11225';
 const STELLAR = "i15391";
 const ERROR = "a12979";
-router.get('/', function(req, res, next) {
+router.get('/accountid', function(req, res, next) {
     console.log(req.body);
     console.log(req.params);
     console.log(req.query);
