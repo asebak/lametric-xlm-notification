@@ -12,6 +12,7 @@ var cache = require('memory-cache');
 const PRICE_UP   = 'a858';
 const PRICE_DOWN = 'a11225';
 const STELLAR = "i15391";
+const ERROR = "a12979";
 router.get('/:accountid', function(req, res, next) {
     var accountId = req.params.accountid;
     if(!accountId){
@@ -19,7 +20,31 @@ router.get('/:accountid', function(req, res, next) {
     }
    getJSON(horizonUrl + "/accounts/" + req.params.accountid, function(error, response){
         if(error){
-           res.status(400).send("Invalid account Id");
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify({
+                frames: [
+                    {
+                        text: "Stellar Account",
+                        icon: ERROR,
+                        index: 0
+                    },
+                    {
+                        text: "Stellar Account",
+                        icon: ERROR,
+                        index: 1
+                    },
+                    {
+                        text: "Stellar Account",
+                        icon: ERROR,
+                        index: 2
+                    },
+                    {
+                        text: "Stellar Account",
+                        icon: ERROR,
+                        index: 3
+                    }
+                ]
+            }, null, 3));
         } else {
             getUsdPrice(function(usd){
                 var prevValue = cache.get(req.params.accountid);
