@@ -74,7 +74,7 @@ router.get('/accountid', function(req, res, next) {
                         },
                         {
                             text: (changedPercentage > 0 ? '+' : '') + changedPercentage.toFixed(2) + '%',
-                            icon: (changedPercentage > 0 ? PRICE_UP : PRICE_DOWN),
+                            icon: (changedPercentage >= 0 ? PRICE_UP : PRICE_DOWN),
                             index: 3
                         }
                     ]
