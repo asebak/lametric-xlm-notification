@@ -14,33 +14,38 @@ const PRICE_DOWN = 'a11225';
 const STELLAR = "i15391";
 const ERROR = "a12979";
 router.get('/:accountid', function(req, res, next) {
+    console.log(req.body);
+    console.log(req.params);
+    console.log(req.query);
+
     var accountId = req.params.accountid;
     if(!accountId){
         accountId = req.query.accountid;
     }
+    console.log("account id is" + accountId);
    getJSON(horizonUrl + "/accounts/" + req.params.accountid, function(error, response){
         if(error){
             res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify({
                 frames: [
                     {
-                        text: "Stellar Account",
-                        icon: ERROR,
+                        text: "Account Invalid",
+                        icon: STELLAR,
                         index: 0
                     },
                     {
-                        text: "Stellar Account",
-                        icon: ERROR,
+                        text: "Account Invalid",
+                        icon: STELLAR,
                         index: 1
                     },
                     {
-                        text: "Stellar Account",
-                        icon: ERROR,
+                        text: "Account Invalid",
+                        icon: STELLAR,
                         index: 2
                     },
                     {
-                        text: "Stellar Account",
-                        icon: ERROR,
+                        text: "Account Invalid",
+                        icon: STELLAR,
                         index: 3
                     }
                 ]
