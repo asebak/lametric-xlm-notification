@@ -19,10 +19,12 @@ router.get('/:accountid', function(req, res, next) {
     console.log(req.query);
 
     var accountId = req.params.accountid;
+    console.log("account id is from params" + accountId);
     if(!accountId){
         accountId = req.query.accountid;
+        console.log("account id is from query " + accountId);
     }
-    console.log("account id is" + accountId);
+    console.log("account id is afterwards" + accountId);
    getJSON(horizonUrl + "/accounts/" + req.params.accountid, function(error, response){
         if(error){
             res.setHeader('Content-Type', 'application/json');
@@ -35,7 +37,7 @@ router.get('/:accountid', function(req, res, next) {
                     },
                     {
                         text: "Account Invalid",
-                        icon: STELLAR,
+                        icon: ERROR,
                         index: 1
                     },
                     {
@@ -45,7 +47,7 @@ router.get('/:accountid', function(req, res, next) {
                     },
                     {
                         text: "Account Invalid",
-                        icon: STELLAR,
+                        icon: ERROR,
                         index: 3
                     }
                 ]
