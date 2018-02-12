@@ -1,26 +1,20 @@
 var express = require('express');
 var router = express.Router();
-var rn = require('random-number');
 var horizonUrl = "https://horizon.stellar.org";
 var getJSON = require('get-json');
-var rndoptions = {
-    min:  1000
-    , max:  10000
-    , integer: true
-};
 var cache = require('memory-cache');
+
 const PRICE_UP   = 'a858';
 const PRICE_DOWN = 'a11225';
 const STELLAR = "i15391";
 const ERROR = "a12979";
+
 router.get('/accountid', function(req, res, next) {
-    console.log(req.body);
-    console.log(req.params);
-    console.log(req.query);
     accountId = req.query.accountid;
     console.log("account id is afterwards: " + accountId);
-   getJSON(horizonUrl + "/accounts/" + req.params.accountid, function(error, response){
-        if(error){
+   getJSON(horizonUrl + "/accounts/" + accountId, function(error, response){
+        if(error) {
+            console.log("error with stellar network");
             res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify({
                 frames: [
@@ -47,13 +41,13 @@ router.get('/accountid', function(req, res, next) {
                 ]
             }, null, 3));
         } else {
+            console.log("retrieve account information");
             getUsdPrice(function(usd){
                 var prevValue = cache.get(req.params.accountid);
                 if(!prevValue){
                     prevValue = 0;
                 }
                 var newValue = response.balances[0].balance;
-                //var newValue = rn(rndoptions);
                 var changedValue = newValue - prevValue;
                 var changedPercentage = 0;
                 if(prevValue !== 0) {
